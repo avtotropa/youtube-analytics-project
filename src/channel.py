@@ -55,3 +55,23 @@ class Channel:
         }
         with open(filename, 'w') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
+
+    def __str__(self):
+        """Возвращает строковое представление объекта Channel"""
+        return f"{self.title} ({self.url})"
+
+    def __add__(self, other):
+        """Оператор сложения для суммирования количества подписчиков двух каналов"""
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other):
+        """Оператор вычитания для разности количества подписчиков двух каналов"""
+        return self.subscriber_count - other.subscriber_count
+
+    def __lt__(self, other):
+        """Оператор меньше для сравнения количества подписчиков двух каналов"""
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other):
+        """Оператор меньше или равно для сравнения количества подписчиков двух каналов"""
+        return self.subscriber_count <= other.subscriber_count
